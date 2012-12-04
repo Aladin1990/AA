@@ -1,5 +1,5 @@
 package main;
 
-public class GiftBuilder {
+public class GiftBuilder implements DataAccess{
 
 }
