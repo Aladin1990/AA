@@ -13,26 +13,29 @@ import java.awt.event.WindowEvent;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
+import javax.swing.JSpinner;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
+import javax.swing.SpinnerNumberModel;
 
 import net.miginfocom.swing.MigLayout;
 
 public class GUI extends JFrame implements DataAccess {
 	JTextArea textArea;
-	JPanel scrollPanel = new JPanel(new MigLayout("wrap 1","",""));
-	JPanel matchingPaneladd;
-	JButton addbtn;
+	JPanel scrollPanel = new JPanel(new MigLayout("wrap 1","grow, fill",""));
+	JPanel scrollPane2 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	int numberOfQustions=0;
 
 	GUI() {
-		super("GUI");
+		super("GIFT Format Creator");
 		JTabbedPane tabbedPane = new JTabbedPane();
 
 		JPanel panel1 = trueFalsePanel("Panel #1");
@@ -133,7 +136,8 @@ public class GUI extends JFrame implements DataAccess {
 
 		panel.add(new JLabel("Question Title (optional)"), "right");
 		panel.add(new JTextField(), "growx,right,gapy 10");
-
+		
+		JButton addbtn;
 		addbtn = new JButton("Add Q&A");
 		panel.add(addbtn,"right, top,gapy 20");
 		panel.add(new JScrollPane(scrollPanel), "grow,right,gapy 20");
@@ -158,9 +162,9 @@ public class GUI extends JFrame implements DataAccess {
 				char letter= (char) ('A'+numberOfQustions);
 				
 				panel1.add(new JLabel(""+letter));
-				panel1.add(new JTextField(23),"grow");
+				panel1.add(new JTextField(),"grow");
 				panel1.add(new JLabel(""+letter));
-				panel1.add(new JTextField(23),"grow");
+				panel1.add(new JTextField(),"grow");
 				panel1.add(new JCheckBox("Delete"),"right");
 				return panel1;
 			}
@@ -184,7 +188,61 @@ public class GUI extends JFrame implements DataAccess {
 
 	JPanel multiChoicePanel(String panelName) {
 		JPanel panel = new JPanel();
-		panel.setLayout(new MigLayout("", "[][]", ""));
+		// panel.setOpaque(false);
+		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
+		textArea = new JTextArea("", 20, 20);
+
+		panel.add(new JLabel("Question Title (optional)"), "right");
+		panel.add(new JTextField(), "growx,right,gapy 10");
+
+		panel.add(new JLabel("Question"), "right,top,gapy 20");
+		panel.add(new JScrollPane(textArea), "growx,hmax 90,hmin 90,gapy 20");
+		
+		JButton clearbtn = new JButton("Clear Text");
+		panel.add(clearbtn, "skip,al right,wrap");
+		
+		panel.add( new DrawLine(),"skip 1");
+		
+		JButton addansbtn;
+		addansbtn = new JButton("Add Answer");
+		panel.add(addansbtn,"right, top,gapy 10");
+		panel.add(new JScrollPane(scrollPane2), "grow,hmax 90,hmin 90,right,gapy 10");
+		
+		
+		JButton savebtn = new JButton("Save Question");
+		panel.add(savebtn,"gapy 10");
+		
+		addansbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				scrollPane2.add(getQuestinandAnswerPane());
+				repaint();
+				numberOfQustions++;
+			}
+			private JPanel getQuestinandAnswerPane() {
+				JPanel panel1 = new JPanel();
+				panel1.setLayout(new MigLayout("", "[grow, fill][]", "grow"));
+				SpinnerModel sm = new SpinnerNumberModel(0, 0, 100, 1);
+				panel1.add(new JTextField(),"growx");
+				panel1.add(new JSpinner(sm));
+				return panel1;
+			}
+
+		});
+		clearbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("");
+			} 
+		});
+		savebtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("Question Saved");
+			}
+		});
 		return panel;
 	}
 
@@ -222,7 +280,7 @@ public class GUI extends JFrame implements DataAccess {
 	class DrawLine extends JPanel {
 		
 		public Dimension getPreferredSize() {
-			return new Dimension(520, 50);
+			return new Dimension(520, 20);
 		}
 		
 		protected void paintComponent(Graphics g) {
