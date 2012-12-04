@@ -1,0 +1,76 @@
+package main;
+
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import net.miginfocom.swing.MigLayout;
+
+public class GUI {
+	GUI() {
+		JTabbedPane tabbedPane = new JTabbedPane();
+
+		JComponent panel1 = trueFalsePanel("Panel #1");
+		tabbedPane.addTab("Tab 1", null, panel1, "Does nothing");
+		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+
+		JFrame panel2 = matchingPanel("Panel #2");
+		tabbedPane.addTab("Tab 2", null, panel2, "Does twice as much nothing");
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+
+		JFrame panel3 = multiChoicePanel("Panel #3");
+		tabbedPane.addTab("Tab 3", null, panel3, "Still does nothing");
+		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+
+		JFrame panel4 = shortAnswerPanel("Panel #4 (has a preferred size of 410 x 50).");
+		panel4.setPreferredSize(new Dimension(410, 50));
+		tabbedPane.addTab("Tab 4", null, panel4, "Does nothing at all");
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+	}
+
+	JComponent trueFalsePanel(String panelName) {
+		JComponent frame = null;
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		return frame;
+	}
+	JFrame matchingPanel(String panelName) {
+		final JFrame frame = new JFrame(panelName);
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		frame.setSize(400, 200);
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+		return frame;
+	}
+	JFrame multiChoicePanel(String panelName) {
+		final JFrame frame = new JFrame(panelName);
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		frame.setSize(400, 200);
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+		return frame;
+	}
+	JFrame shortAnswerPanel(String panelName) {
+		final JFrame frame = new JFrame(panelName);
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		frame.setSize(400, 200);
+		frame.add(panel);
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+		return frame;
+	}
+
+}

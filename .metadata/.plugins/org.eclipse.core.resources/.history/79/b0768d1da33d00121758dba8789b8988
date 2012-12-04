@@ -1,0 +1,77 @@
+package main;
+
+import java.awt.Dimension;
+import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
+import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTabbedPane;
+
+import net.miginfocom.swing.MigLayout;
+
+public class GUI extends JFrame{
+	private JFrame mainFrame;
+	GUI() {
+		JTabbedPane tabbedPane = new JTabbedPane();
+
+		JFrame panel1 = trueFalsePanel("Panel #1");
+		tabbedPane.addTab("Tab 1", panel1);
+		tabbedPane.setMnemonicAt(0, KeyEvent.VK_1);
+
+		JFrame panel2 = matchingPanel("Panel #2");
+		tabbedPane.addTab("Tab 2", panel2);
+		tabbedPane.setMnemonicAt(1, KeyEvent.VK_2);
+
+		JFrame panel3 = multiChoicePanel("Panel #3");
+		tabbedPane.addTab("Tab 3", panel3);
+		tabbedPane.setMnemonicAt(2, KeyEvent.VK_3);
+
+		JFrame panel4 = shortAnswerPanel("Panel #4 (has a preferred size of 410 x 50).");
+		tabbedPane.addTab("Tab 4", panel4);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+		
+		mainFrame.setContentPane(tabbedPane);//the JFrame will now display the tabbed pane
+        mainFrame.setSize(265,200);
+        mainFrame.setLocationRelativeTo(null);
+        mainFrame.setVisible(true);
+        mainFrame.setResizable(false);
+        mainFrame.addWindowListener(new WindowAdapter() {
+            public void windowClosing(WindowEvent e) 
+            { System.exit(0); }
+        });
+	}
+	
+
+	JFrame trueFalsePanel(String panelName) {
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		return frame;
+	}
+
+	JFrame matchingPanel(String panelName) {
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		return frame;
+	}
+
+	JFrame multiChoicePanel(String panelName) {
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		return frame;
+	}
+
+	JFrame shortAnswerPanel(String panelName) {
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("", "[][]", ""));
+		return frame;
+	}
+
+}
