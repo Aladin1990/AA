@@ -1,19 +1,21 @@
 package main;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.text.NumberFormat;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -32,7 +34,9 @@ public class GUI extends JFrame implements DataAccess {
 	JTextArea textArea;
 	JPanel scrollPanel = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	JPanel scrollPane2 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
+	JPanel scrollPane3 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	int numberOfQustions=0;
+	String onlyNumbers;
 
 	GUI() {
 		super("GIFT Format Creator");
@@ -58,8 +62,8 @@ public class GUI extends JFrame implements DataAccess {
 		tabbedPane.addTab("Numerical", panel5);
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
-		JPanel panel6 = calculatedPanel("Panel #6");
-		tabbedPane.addTab("Calculated", panel6);
+		JPanel panel6 = missingWordPanel("Panel #6");
+		tabbedPane.addTab("Missing Word", panel6);
 		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
 
 		JPanel panel7 = essayPanel("Panel #7 ");
@@ -129,7 +133,6 @@ public class GUI extends JFrame implements DataAccess {
 	}
 
 	JPanel matchingPanel(String panelName) {
-		scrollPanel.setBackground(Color.blue);
 		JPanel panel = new JPanel();
 		// panel.setOpaque(false);
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
@@ -248,18 +251,140 @@ public class GUI extends JFrame implements DataAccess {
 
 	JPanel shortAnswerPanel(String panelName) {
 		JPanel panel = new JPanel();
-		panel.setLayout(new MigLayout("", "[][]", ""));
+		// panel.setOpaque(false);
+		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
+		textArea = new JTextArea("", 20, 20);
+
+		panel.add(new JLabel("Question Title (optional)"), "right");
+		panel.add(new JTextField(), "growx,right,gapy 10");
+
+		panel.add(new JLabel("Question"), "right,top,gapy 20");
+		panel.add(new JScrollPane(textArea), "growx,hmax 90,hmin 90,gapy 20");
+		
+		JButton clearbtn = new JButton("Clear Text");
+		panel.add(clearbtn, "skip,al right,wrap");
+		
+		panel.add( new DrawLine(),"skip 1");
+		
+		JButton addansbtn;
+		addansbtn = new JButton("Add Answer");
+		panel.add(addansbtn,"right, top,gapy 10");
+		panel.add(new JScrollPane(scrollPane3), "grow,hmax 90,hmin 90,right,gapy 10");
+		
+		
+		JButton savebtn = new JButton("Save Question");
+		panel.add(savebtn,"gapy 10");
+		
+		addansbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				scrollPane3.add(getQuestinandAnswerPane());
+				repaint();
+				numberOfQustions++;
+			}
+			private JPanel getQuestinandAnswerPane() {
+				JPanel panel1 = new JPanel();
+				panel1.add(new JLabel("Correct Answer: "),"al right");
+				panel1.setLayout(new MigLayout("", "[][grow, fill]", "grow"));
+				panel1.add(new JTextField(),"growx");
+			
+				return panel1;
+			}
+
+		});
+		clearbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("");
+			} 
+		});
+		savebtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("Question Saved");
+			}
+		});
 		return panel;
 	}
 
 	JPanel numericalPanel(String panelName) {
-		JTabbedPane frame = new JTabbedPane();
 		JPanel panel = new JPanel();
-		panel.setLayout(new MigLayout("", "[][]", ""));
+		// panel.setOpaque(false);
+		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
+		textArea = new JTextArea("", 20, 20);
+
+		panel.add(new JLabel("Question Title (optional)"), "right");
+		panel.add(new JTextField(), "growx,right,gapy 10");
+
+		panel.add(new JLabel("Question"), "right,top,gapy 20");
+		panel.add(new JScrollPane(textArea), "growx,gapy 20");
+		
+		JButton clearbtn = new JButton("Clear Text");
+		panel.add(clearbtn, "skip,al right,wrap");
+		
+		panel.add( new DrawLine(),"skip 1");
+		final JTextField text1 = new JTextField();
+		final JTextField text2 = new JTextField();
+		final JTextField text3 = new JTextField();
+		panel.add(new JLabel("Correct Answer"));
+		panel.add(text1 ,"growx");
+		panel.add(new JLabel("Min Margin: "),"skip,split 4");
+		panel.add(text2 ,"growx");
+		panel.add(new JLabel("Max Margin: "));
+		panel.add(text3 ,"growx");
+		
+		JButton savebtn = new JButton("Save Question");
+		panel.add(savebtn,"gapy 20");
+		text1 .addKeyListener(new KeyAdapter() {
+	            public void keyReleased(KeyEvent e) {
+	            	//e.getSource();
+	            }
+	        });
+		text2 .addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+            	e.getSource();
+            	int charCode = e.getKeyChar();
+            	text1.setText(""+e.getKeyChar());
+            	if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            		//text1.setText("Enter numerals only in this field.");
+            		text2.setText(onlyNumbers);
+                   // return false;
+                   }
+                   // return true;
+            }
+            public void keyPressed(KeyEvent e) {
+            	onlyNumbers=text2.getText();
+            	text2.setText(onlyNumbers);
+            }
+        });
+		text3 .addKeyListener(new KeyAdapter() {
+            public void keyReleased(KeyEvent e) {
+            	//e.getSource();
+            }
+            public void keyPressed(KeyEvent e) {
+                // TODO: Do something for the keyPressed event
+            }
+        });
+		clearbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("");
+			} 
+		});
+		savebtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("Question Saved");
+			}
+		});
 		return panel;
 	}
 
-	JPanel calculatedPanel(String panelName) {
+	JPanel missingWordPanel(String panelName) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new MigLayout("", "[][]", ""));
 		return panel;
@@ -267,7 +392,37 @@ public class GUI extends JFrame implements DataAccess {
 
 	JPanel essayPanel(String panelName) {
 		JPanel panel = new JPanel();
-		panel.setLayout(new MigLayout("", "[][]", ""));
+		// panel.setOpaque(false);
+		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
+		textArea = new JTextArea("", 20, 20);
+
+		panel.add(new JLabel("Question Title (optional)"), "right");
+		panel.add(new JTextField(), "growx,right,gapy 10");
+
+		panel.add(new JLabel("Question"), "right,top,gapy 20");
+		panel.add(new JScrollPane(textArea), "growx,gapy 20");
+		
+		JButton clearbtn = new JButton("Clear Text");
+		panel.add(clearbtn, "skip,al right,wrap");
+		
+		panel.add( new DrawLine(),"skip 1");
+		
+		JButton savebtn = new JButton("Save Question");
+		panel.add(savebtn,"gapy 20");
+		clearbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("");
+			} 
+		});
+		savebtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				textArea.setText("Question Saved");
+			}
+		});
 		return panel;
 	}
 
