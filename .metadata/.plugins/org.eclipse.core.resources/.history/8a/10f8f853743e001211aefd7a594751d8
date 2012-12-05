@@ -35,10 +35,7 @@ public class GUI extends JFrame implements DataAccess {
 	JPanel scrollPanel = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	JPanel scrollPane2 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	JPanel scrollPane3 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
-	JPanel scrollPane4 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
-	JPanel scrollPane5 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	int numberOfQustions=0;
-	int numberOfMissingWords=0;
 	String onlyNumbers;
 
 	GUI() {
@@ -223,6 +220,7 @@ public class GUI extends JFrame implements DataAccess {
 			public void actionPerformed(ActionEvent e) {
 				scrollPane2.add(getQuestinandAnswerPane());
 				repaint();
+				numberOfQustions++;
 			}
 			private JPanel getQuestinandAnswerPane() {
 				JPanel panel1 = new JPanel();
@@ -282,6 +280,7 @@ public class GUI extends JFrame implements DataAccess {
 			public void actionPerformed(ActionEvent e) {
 				scrollPane3.add(getQuestinandAnswerPane());
 				repaint();
+				numberOfQustions++;
 			}
 			private JPanel getQuestinandAnswerPane() {
 				JPanel panel1 = new JPanel();
@@ -387,51 +386,7 @@ public class GUI extends JFrame implements DataAccess {
 
 	JPanel missingWordPanel(String panelName) {
 		JPanel panel = new JPanel();
-		// panel.setOpaque(false);
-		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
-		textArea = new JTextArea("", 20, 20);
-
-		panel.add(new JLabel("Question Title (optional)"), "right");
-		panel.add(new JTextField("Enter Missing words in the following text"), "growx,right,gapy 10");
-		JButton addansbtn;
-		addansbtn = new JButton("Add another missing word");
-		panel.add(addansbtn,"right,top,gapy 10,wrap");
-		
-		panel.add(new JScrollPane(scrollPane4), "grow,right,span 2");	
-		
-		JButton savebtn = new JButton("Save");
-		panel.add(savebtn,"gapy 10");
-		
-		addansbtn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				numberOfMissingWords++;
-				scrollPane4.add(getQuestinandAnswerPane());
-				repaint();
-			}
-			private JPanel getQuestinandAnswerPane() {
-				JPanel panel1 = new JPanel();
-				panel1.setLayout(new MigLayout("wrap 2", "[][grow, fill]", "grow"));
-				panel1.add(new JLabel("Mising word"+numberOfMissingWords), "right,top");
-				panel1.add( new DrawLine());
-				panel1.add(new JLabel("Text Before mising word"), "right,top");
-				panel1.add(new JTextArea(), "growx");
-				panel1.add(new JLabel("Enter missing word"), "right,top");
-				panel1.add(new JTextField(), "growx");
-				panel1.add(new JLabel("Text After mising word"), "right,top");
-				panel1.add(new JTextArea(), "growx");
-			
-				return panel1;
-			}
-
-		});
-		savebtn.addActionListener(new ActionListener() {
-
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				textArea.setText("Question Saved");
-			}
-		});
+		panel.setLayout(new MigLayout("", "[][]", ""));
 		return panel;
 	}
 

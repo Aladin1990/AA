@@ -38,7 +38,6 @@ public class GUI extends JFrame implements DataAccess {
 	JPanel scrollPane4 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	JPanel scrollPane5 = new JPanel(new MigLayout("wrap 1","grow, fill",""));
 	int numberOfQustions=0;
-	int numberOfMissingWords=0;
 	String onlyNumbers;
 
 	GUI() {
@@ -223,6 +222,7 @@ public class GUI extends JFrame implements DataAccess {
 			public void actionPerformed(ActionEvent e) {
 				scrollPane2.add(getQuestinandAnswerPane());
 				repaint();
+				numberOfQustions++;
 			}
 			private JPanel getQuestinandAnswerPane() {
 				JPanel panel1 = new JPanel();
@@ -282,6 +282,7 @@ public class GUI extends JFrame implements DataAccess {
 			public void actionPerformed(ActionEvent e) {
 				scrollPane3.add(getQuestinandAnswerPane());
 				repaint();
+				numberOfQustions++;
 			}
 			private JPanel getQuestinandAnswerPane() {
 				JPanel panel1 = new JPanel();
@@ -405,15 +406,14 @@ public class GUI extends JFrame implements DataAccess {
 		addansbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				numberOfMissingWords++;
 				scrollPane4.add(getQuestinandAnswerPane());
 				repaint();
+				numberOfQustions++;
 			}
 			private JPanel getQuestinandAnswerPane() {
 				JPanel panel1 = new JPanel();
+				panel1.add( new DrawLine(),"span 2");
 				panel1.setLayout(new MigLayout("wrap 2", "[][grow, fill]", "grow"));
-				panel1.add(new JLabel("Mising word"+numberOfMissingWords), "right,top");
-				panel1.add( new DrawLine());
 				panel1.add(new JLabel("Text Before mising word"), "right,top");
 				panel1.add(new JTextArea(), "growx");
 				panel1.add(new JLabel("Enter missing word"), "right,top");
