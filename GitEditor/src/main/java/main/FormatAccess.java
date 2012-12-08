@@ -20,4 +20,22 @@ public class FormatAccess {
 		formatterString = " ="+part1+" -> "+part2;
 		return formatterString;
 	}
+	String formatMultiChoice(String part1,String part2){
+		int precentage=Integer.parseInt(part2);
+		if(precentage==100){
+			formatterString = " ="+part1+"# correct";
+		}
+		else if(precentage==0){
+			formatterString = " ~"+part1+"# wrong"; 
+		}
+		else{
+			formatterString = " =%"+precentage+"%"+part1+""; 
+		}
+				//feed back
+		return formatterString;
+	}
+	String formatShortAnswer(String part1){
+		formatterString = " ="+part1;
+		return formatterString;
+	}
 }

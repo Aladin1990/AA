@@ -55,10 +55,15 @@ public class GUI extends JFrame{
 	JTextField TFtextField;
 	JRadioButton truebtn;
 	boolean titleSet = false;
-	
 	//Matching
 	JTextField mtextField;
 	JTextArea mtextArea;
+	//Multichoice
+	JTextField mulTextField;
+	JTextArea mulTextArea;
+	//Short answer
+	JTextField sTextField;
+	JTextArea sTextArea;
 	//general fields
 	JTextArea textArea;
 	JTextArea previewText;
@@ -255,7 +260,6 @@ public class GUI extends JFrame{
 		deletebtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				int inter=0;
 				//boolean delete = true;
 				while(true){
@@ -275,7 +279,6 @@ public class GUI extends JFrame{
 		});
 		savebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				giftBuilder.append("//matching");
 				giftBuilder.append(formatAccess.formatTitle(mtextField.getText()));
 				giftBuilder.append(mtextArea.getText()+" {"); 
@@ -308,13 +311,11 @@ public class GUI extends JFrame{
 		JPanel panel = new JPanel();
 		// panel.setOpaque(false);
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
-		textArea = new JTextArea("", 20, 20);
-
 		panel.add(new JLabel("Question Title (optional)"), "right");
-		panel.add(new JTextField(), "growx,right,gapy 10");
+		panel.add(mulTextField=new JTextField(), "growx,right,gapy 10");
 
 		panel.add(new JLabel("Question"), "right,top,gapy 20");
-		panel.add(new JScrollPane(textArea), "growx,hmax 90,hmin 90,gapy 20");
+		panel.add(new JScrollPane(mulTextArea=new JTextArea()), "growx,hmax 90,hmin 90,gapy 20");
 
 		JButton clearbtn = new JButton("Clear Text");
 		panel.add(clearbtn, "skip,al right,wrap");
@@ -324,8 +325,7 @@ public class GUI extends JFrame{
 		JButton addansbtn;
 		addansbtn = new JButton("Add Answer");
 		panel.add(addansbtn, "right, top,gapy 10");
-		panel.add(new JScrollPane(scrollPane2),
-				"grow,hmax 90,hmin 90,right,gapy 10");
+		panel.add(new JScrollPane(scrollPane2),"grow,hmax 90,hmin 90,right,gapy 10");
 
 		JButton savebtn = new JButton("Save Question");
 		panel.add(savebtn, "gapy 10");
@@ -341,19 +341,25 @@ public class GUI extends JFrame{
 		clearbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				textArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				giftBuilder.append("//Multichoice");
+				giftBuilder.append(formatAccess.formatTitle(mulTextField.getText()));
+				giftBuilder.append(mulTextArea.getText()+" {"); 
 				for (Multichoice i : list1) {
-					System.out.println("" + i.getTextField1().getText());
-					System.out.println(""
-							+ i.getSpinner().getModel().getValue());
+					giftBuilder.append(formatAccess.formatMultiChoice(i.getTextField1().getText(), i.getSpinner().getModel().getValue().toString()));
 				}
+				if(!list1.isEmpty()) list1.get(0).deleteAll();;
+				list1=new ArrayList<Multichoice>();
+				repaint();
+				mulTextField.setText("");
+				mulTextArea.setText("");
+				giftBuilder.append("}\n"); //add new line
+				giftBuilder.appendQuestion();
 			}
 		});
 		return panel;
@@ -363,28 +369,20 @@ public class GUI extends JFrame{
 		JPanel panel = new JPanel();
 		// panel.setOpaque(false);
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
-		textArea = new JTextArea("", 20, 20);
-
 		panel.add(new JLabel("Question Title (optional)"), "right");
-		panel.add(new JTextField(), "growx,right,gapy 10");
-
+		panel.add(sTextField=new JTextField(), "growx,right,gapy 10");
 		panel.add(new JLabel("Question"), "right,top,gapy 20");
-		panel.add(new JScrollPane(textArea), "growx,hmax 90,hmin 90,gapy 20");
+		panel.add(new JScrollPane(sTextArea= new JTextArea()), "growx,hmax 90,hmin 90,gapy 20");
 
 		JButton clearbtn = new JButton("Clear Text");
 		panel.add(clearbtn, "skip,al right,wrap");
-
 		panel.add(new DrawLine(), "skip 1");
-
 		JButton addansbtn;
 		addansbtn = new JButton("Add Answer");
 		panel.add(addansbtn, "right, top,gapy 10");
-		panel.add(new JScrollPane(scrollPane3),
-				"grow,hmax 90,hmin 90,right,gapy 10");
-
+		panel.add(new JScrollPane(scrollPane3),"grow,hmax 90,hmin 90,right,gapy 10");
 		JButton savebtn = new JButton("Save Question");
 		panel.add(savebtn, "gapy 10");
-
 		addansbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
@@ -396,17 +394,25 @@ public class GUI extends JFrame{
 		clearbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
 				textArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
+				giftBuilder.append("//Short Answer");
+				giftBuilder.append(formatAccess.formatTitle(sTextField.getText()));
+				giftBuilder.append(sTextArea.getText()+" {"); 
 				for (ShortAnswer i : list2) {
-					System.out.println("" + i.getTextField1().getText());
+					giftBuilder.append(formatAccess.formatShortAnswer(i.getTextField1().getText()));
 				}
+				if(!list2.isEmpty()) list2.get(0).deleteAll();
+				list1=new ArrayList<Multichoice>();
+				repaint();
+				sTextField.setText("");
+				sTextArea.setText("");
+				giftBuilder.append("}\n"); //add new line
+				giftBuilder.appendQuestion();
 			}
 		});
 		return panel;
@@ -667,11 +673,17 @@ public class GUI extends JFrame{
 		private SpinnerModel sm = new SpinnerNumberModel(0, 0, 100, 1);;
 		private JSpinner spinner;
 		private JTextField textField1;
+		private JPanel panel;
 
 		Multichoice(JPanel panel, int count) {
+			this.panel=panel;
 			panel.setLayout(new MigLayout("wrap 2", "[grow, fill][]", "grow"));
 			panel.add(textField1 = new JTextField(), "grow");
 			panel.add(spinner = new JSpinner(sm));
+		}
+
+		public void deleteAll() {
+			panel.removeAll();
 		}
 
 		public JTextField getTextField1() {
@@ -685,12 +697,17 @@ public class GUI extends JFrame{
 
 	class ShortAnswer {
 		private JTextField textField1;
+		private JPanel panel;
 
 		ShortAnswer(JPanel panel, int count) {
+			this.panel=panel;
 			panel.setLayout(new MigLayout("wrap 2", "[][grow, fill]", "grow"));
 			panel.add(new JLabel("Correct Answer: "), "al right");
 			panel.add(textField1 = new JTextField(), "growx");
 
+		}
+		public void deleteAll() {
+			panel.removeAll();	
 		}
 
 		public JTextField getTextField1() {
