@@ -6,6 +6,113 @@
  <description>Welcome to the home of Spring, the leading platform to build and run enterprise Java applications. Led and sustained by SpringSource, Spring delivers significant benefits for many projects, increasing development productivity and runtime performance while improving test coverage and application quality.</description>
  <language>en</language>
 <item>
+ <title>Tomcat Expert: Use Spring Insight Developer to Analyze Code, Install it with Tomcat, and Extend it with Plugins</title>
+ <link>http://www.springsource.org/node/3761</link>
+ <description>&lt;p&gt; Did you know Springsource offers a free code trace / analysis tool with a large ecosystem of plugins, and is now extensible beyond Java? People are still discovering the benefits of the free tool from VMware SpringSource, called &lt;a href=&quot;http://www.springsource.org/insight/?cid=70170000000XDJI&quot;&gt;Spring Insight Developer&lt;/a&gt; . The Tomcat Expert blog  provides an short explanation of what Spring Insight Developer does, how to set it up with &lt;a href=&quot;http://tomcat.apache.org/&quot;&gt;Apache Tomcat&lt;/a&gt; ,   and an example of available plugins.  &lt;/p&gt;
+&lt;p&gt; Learn more at the &lt;a href=&quot;http://bit.ly/TQQXf2&quot;&gt;TomcatExpert Blog&lt;/a&gt; and experience faster, easier troubleshooting!&lt;/p&gt;
+&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+</description>
+ <comments>http://www.springsource.org/node/3761#comments</comments>
+ <category domain="http://www.springsource.org/taxonomy/term/4">News and Announcements</category>
+ <pubDate>Fri, 07 Dec 2012 19:39:01 +0000</pubDate>
+ <dc:creator>Pieter Humphrey</dc:creator>
+ <guid isPermaLink="false">3761 at http://www.springsource.org</guid>
+</item>
+<item>
+ <title>Spring for Android 1.0.1 Released</title>
+ <link>http://www.springsource.org/spring-android/news/1.0.1-released</link>
+ <description>&lt;p&gt;Dear Spring Community,&lt;/p&gt;
+
+&lt;p&gt;
+We are happy to announce the release of &lt;a href=&quot;http://www.springsource.org/spring-android&quot;&gt;Spring for Android&lt;/a&gt; 1.0.1!
+&lt;/p&gt;
+&lt;p&gt;Spring for Android is an extension of the Spring Framework that aims to simplify the development of native Android applications.&lt;/p&gt;
+
+&lt;p&gt;This release adds support for Jackson 2.x in RestTemplate through the new MappingJackson2HttpMessageConverter. It also addresses several bugs and compatibility issues with RestTemplate and Android Jelly Bean. See the &lt;a href=&quot;http://static.springsource.org/spring-android/docs/1.0.1.RELEASE/changelog.txt&quot;&gt;changelog&lt;/a&gt; and &lt;a href=&quot;http://static.springsource.org/spring-android/docs/1.0.1.RELEASE/reference/html/&quot;&gt;reference manual&lt;/a&gt; for more information.
+&lt;/p&gt;
+
+&lt;p&gt;To retrieve the software, 
+&lt;a href=&quot;http://www.springsource.org/download/community?project=Spring%20for%20Android&quot;&gt;download&lt;/a&gt; the release distribution, or add the &lt;a href=&quot;http://static.springsource.org/spring-android/docs/1.0.1.RELEASE/reference/htmlsingle/#rest-template-howtoget&quot;&gt;maven artifacts&lt;/a&gt; to your project. Sample apps are available at &lt;a href=&quot;https://github.com/SpringSource/spring-android-samples&quot;&gt;github.com/SpringSource/spring-android-samples&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;If you are building an Android app, we encourage you try out Spring for Android 1.0.1 and &lt;a href=&quot;http://forum.springsource.org/forumdisplay.php?88-Android&quot;&gt;collaborate&lt;/a&gt; with us on the next iteration of the project.&lt;/p&gt;</description>
+ <comments>http://www.springsource.org/spring-android/news/1.0.1-released#comments</comments>
+ <category domain="http://www.springsource.org/taxonomy/term/4">News and Announcements</category>
+ <pubDate>Thu, 06 Dec 2012 23:24:32 +0000</pubDate>
+ <dc:creator>Roy Clarkson</dc:creator>
+ <guid isPermaLink="false">3760 at http://www.springsource.org</guid>
+</item>
+<item>
+ <title>This Week in Spring  - December 4th, 2012 </title>
+ <link>http://www.springsource.org/node/3759</link>
+ <description> 
+
+&lt;p&gt; &lt;EM&gt;Wow&lt;/EM&gt; guys! December 4th already! 
+	 Time sure flies when you&#039;re having fun! 
+	
+	Welcome back to another installment of &lt;EM&gt;This Week in Spring&lt;/EM&gt;. This week, I&#039;m in Beijing for &lt;a href=&quot;http://springonechina.cloudfoundry.com&quot;&gt;SpringOne China&lt;/a&gt; and, next week, I&#039;m off to India for &lt;A href=&quot;http://springoneindia.cloudfoundry.com/&quot;&gt;SpringOne India&lt;/a&gt;. If you&#039;re in Beijing, Bangalore or Hyderabad, I&#039;d love to see you at these events!
+ Alright, let&#039;s get on with this week&#039;s roundup!
+&lt;/p&gt;
+
+&lt;OL&gt; 
+	 &lt;LI&gt;  Mark Fisher 
+		       gets the ball rolling this week with a very nice  present:  &lt;A href=&quot;http://www.springsource.org/node/3756&quot;&gt;Spring Integration 2.2.0.GA has been released! &lt;/a&gt; The new release is well described in the 
+			blogs on the various new features referenced in the release announcement, so be sure to check it out!
+			
+		&lt;/LI&gt;
+	&lt;LI&gt;Martin Lippert&#039;s announced that the &lt;a href=&quot;http://www.springsource.org/node/3757&quot;&gt;Spring Tool Suite and Groovy Tool Suite 3.2.0.M1 have been released!&lt;/a&gt; &lt;/li&gt;
+	
+	 &lt;LI&gt; Tobias Trelle is back at it again, &lt;A href= &quot;http://blog.codecentric.de/en/2012/11/spring-batch-mongodb/&quot;&gt;this time&lt;/a&gt; with a blog on 
+	 how to use Spring Batch with MongoDB, including working code &lt;a href= &quot;https://github.com/ttrelle/spring-batch-mongodb-support&quot;&gt;at his GitHub repository 
+&lt;/a&gt;.
+  &lt;/LI&gt;
+  &lt;LI&gt; 
+	Be sure not to miss this &lt;a href =&quot;http://www.springsource.org/node/3753&quot;&gt;webinar on Spring framework 3.2!&lt;/a&gt;
+	&lt;/lI&gt;
+	&lt;LI&gt; The &lt;EM&gt;Java Dev Tips&lt;/EM&gt; blog has an interesting post on
+ &lt;a href= &quot;http://javadevtips.blogspot.com/2012/12/work-with-annotations-in-spring.html&quot;&gt;working with custom annotations in the Spring framework.&lt;/a&gt;
+		 &lt;/lI&gt;
+		
+			&lt;LI&gt; The All and Sundry blog has a &lt;a href=&quot;http://www.java-allandsundry.com/2012/11/spring-test-mvc-with-spring-32rc1.html&quot;&gt;nice post on how to use Spring&#039;s Test MVC framework in Spring 3.2&lt;/a&gt;. &lt;/lI&gt;	
+				
+				&lt;LI&gt;  The &lt;EM&gt;Kruders&lt;/EM&gt; blog has an interesting post on how &lt;a href= &quot;http://kruders.com/spring-mvc/configure-multiple-handler-mappings-in-spring-mvc/&quot;&gt;to configure multiple handler mappings with Spring MVC based on a priority&lt;/a&gt; &lt;/lI&gt;
+				
+				
+					&lt;LI&gt; The &lt;EM&gt;WikAdz&lt;/eM&gt; blog has an interesting video on 
+&lt;a href=&quot;http://wikadz.com/spring-framework-tutorial-session-3-spring-auto-wiring-bytype-byname-constructor/&quot;&gt;Spring&#039;s autowiring capabilities.&lt;/a&gt;
+						 &lt;/lI&gt; 
+							&lt;LI&gt;
+ 								Check out this post on the &lt;em&gt;Java Kart&lt;/EM&gt; blog if you want a &lt;a href=&quot;http://javakart.blogspot.com/2012/12/spring-mvc-web-application-with-example.html&quot;&gt;concise walk through introducing Spring MVC with an example&lt;/a&gt;?  
+								 &lt;/lI&gt;
+									&lt;LI&gt; The &lt;EM&gt;Online Technology Vision&lt;/EM&gt; bog has an interesting post
+										&lt;a href=&quot;http://www.onlinetechvision.com/?p=658&quot;&gt;on  building Spring Batch jobs that are &lt;CODE&gt;TaskletStep&lt;/CODE&gt; oriented.&lt;/a&gt;  &lt;/lI&gt;
+											&lt;LI&gt; The &lt;EM&gt;Article Stack&lt;/EM&gt; blog has a nice post on 
+												
+										 &lt;A href= &quot;http://article-stack.com/education/tiles-framework-what-why-and-how-to-integrate-with-spring-framework.amty&quot;&gt;		 integrating Spring with Apache Tiles&lt;/a&gt;.
+												 Apache Tiles is a nice way to manage complex layouts in web applications 
+												and can be used wit other view technologies besides &lt;CODE&gt;.JSP&lt;/CODE&gt;  like 
+												 &lt;a href= &quot;http://www.thymeleaf.org/&quot;&gt;Thymeleaf&lt;/a&gt;. It&#039;s also worth noting that Tiles gives you a nice, central place to
+												make decisions about what content is rendered based on the type of request.
+												This is useful, for example, when using Spring Mobile to 
+												render mobile form-factor appropriate content or 
+												more desktop-browser centric content. 
+												
+												 &lt;/lI&gt;
+													&lt;LI&gt; Dinuka Arseculeratne over at the Java Code Geeks blog 
+														 has an interesting article on integration testing
+														&lt;a href= &quot;http://www.javacodegeeks.com/2012/11/how-cool-is-integration-testing-with-spring-and-hibernate.html&quot;&gt;data access logic with Spring&lt;/a&gt; and Hibernate. Very cool!
+														 &lt;/lI&gt;
+														
+
+
+ &lt;/oL&gt;
+</description>
+ <comments>http://www.springsource.org/node/3759#comments</comments>
+ <category domain="http://www.springsource.org/taxonomy/term/14">This Week in Spring</category>
+ <pubDate>Wed, 05 Dec 2012 11:14:47 +0000</pubDate>
+ <dc:creator>Josh Long</dc:creator>
+ <guid isPermaLink="false">3759 at http://www.springsource.org</guid>
+</item>
+<item>
  <title>Spring Tool Suite and Groovy/Grails Tool Suite 3.2.0.M1 released</title>
  <link>http://www.springsource.org/node/3757</link>
  <description>&lt;p&gt;Dear Spring Community,&lt;/p&gt;
@@ -90,7 +197,8 @@ Part 4: &lt;a href=&quot;http://blog.springsource.org/2012/10/09/spring-integrat
 <item>
  <title>SpringOne 2GX 2012 Web Track: Designing REST-ful API using Spring 3, IOC in Javascript</title>
  <link>http://www.springsource.org/node/3754</link>
- <description>&lt;H1&gt;Designing a REST-ful API using Spring 3&lt;/H1&gt;
+ <description>&lt;p&gt;&amp;nbsp;&lt;/p&gt;
+&lt;H1&gt;Designing a REST-ful API using Spring 3&lt;/H1&gt;
 &lt;DIV&gt;
   &lt;p&gt;In the course of creating VAS, we did a lot of work to design a   useful REST API. &lt;/p&gt;
   &lt;p&gt;REST is generally a very loose collection of principals   that can be interpreted in many ways, so this talk would describe a   more concrete idea of what a REST-ful API should look like. &lt;/p&gt;
@@ -156,19 +264,19 @@ Part 4: &lt;a href=&quot;http://blog.springsource.org/2012/10/09/spring-integrat
  <title>Webinar: Spring Framework 3.2 - Themes and Trends</title>
  <link>http://www.springsource.org/node/3753</link>
  <description>&lt;div class=&quot;event-nodeapi&quot;&gt;
-  &lt;div class=&quot;event-start dtstart&quot; title=&quot;2012-01-17T17:00:00Z&quot;&gt;&lt;label&gt;Start:  &lt;/label&gt; 2012-01-17 10:00 &lt;/div&gt;
+  &lt;div class=&quot;event-start dtstart&quot; title=&quot;2013-01-17T17:00:00Z&quot;&gt;&lt;label&gt;Start:  &lt;/label&gt; 2013-01-17 10:00 &lt;/div&gt;
 &lt;/div&gt;
   &lt;div class=&quot;event-nodeapi&quot;&gt;
-    &lt;div class=&quot;event-end dtend&quot; title=&quot;2012-01-17T18:00:00Z&quot;&gt;&lt;label&gt;End: &lt;/label&gt; 2012-01-17 11:00 &lt;/div&gt;
+    &lt;div class=&quot;event-end dtend&quot; title=&quot;2013-01-17T18:00:00Z&quot;&gt;&lt;label&gt;End: &lt;/label&gt; 2013-01-17 11:00 &lt;/div&gt;
   &lt;/div&gt;
  &lt;div class=&quot;event-nodeapi&quot;&gt;
    &lt;div class=&quot;event-tz&quot;&gt;&lt;label&gt;Timezone: &lt;/label&gt;US/Pacific &lt;/div&gt;
   &lt;/div&gt;
 &lt;div class=&quot;event-nodeapi&quot;&gt;
-  &lt;div class=&quot;event-start dtstart&quot; title=&quot;2012-01-17T17:00:00Z&quot;&gt;&lt;label&gt;Start:  &lt;/label&gt; 2012-01-17 10:00 &lt;/div&gt;
+  &lt;div class=&quot;event-start dtstart&quot; title=&quot;2013-01-17T17:00:00Z&quot;&gt;&lt;label&gt;Start:  &lt;/label&gt; 2013-01-17 10:00 &lt;/div&gt;
 &lt;/div&gt;
   &lt;div class=&quot;event-nodeapi&quot;&gt;
-    &lt;div class=&quot;event-end dtend&quot; title=&quot;2012-01-17T18:00:00Z&quot;&gt;&lt;label&gt;End: &lt;/label&gt; 2012-01-17 11:00 &lt;/div&gt;
+    &lt;div class=&quot;event-end dtend&quot; title=&quot;2013-01-17T18:00:00Z&quot;&gt;&lt;label&gt;End: &lt;/label&gt; 2013-01-17 11:00 &lt;/div&gt;
   &lt;/div&gt;
  &lt;div class=&quot;event-nodeapi&quot;&gt;
    &lt;div class=&quot;event-tz&quot;&gt;&lt;label&gt;Timezone: &lt;/label&gt;US/Pacific &lt;/div&gt;
@@ -282,66 +390,6 @@ Europe: Thursday, December 13&lt;br&gt;
  <pubDate>Tue, 27 Nov 2012 19:33:53 +0000</pubDate>
  <dc:creator>Chloe Jackson</dc:creator>
  <guid isPermaLink="false">3751 at http://www.springsource.org</guid>
-</item>
-<item>
- <title>Spring Framework 3.2 RC2 Released</title>
- <link>http://www.springsource.org/node/3750</link>
- <description>&lt;p&gt;The second and final release candidate toward Spring Framework 3.2 is now available from the &lt;a href=&quot;https://github.com/SpringSource/spring-framework/wiki/Downloading-Spring-artifacts#wiki-resolving-spring-artifacts&quot;&gt;SpringSource repository&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;With GA rapidly approaching this release consists mostly of bug fixes and refactoring; see the &lt;a href=&quot;https://jira.springsource.org/secure/ReleaseNote.jspa?projectId=10000&amp;amp;version=13611&quot;&gt;release notes&lt;/a&gt; for complete details. Note that a number of the bug fixes are significant, some relating to performance and concurrency. Please update your dev and test builds to give RC2 a try – it&#039;s the last chance for feedback before 3.2 goes final!&lt;/p&gt;
-&lt;p&gt;A few non-code related changes are worth pointing out as well:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Our &lt;a href=&quot;http://static.springsource.org/spring/docs/3.2.0.RC2/reference/htmlsingle&quot;&gt;reference documentation&lt;/a&gt; has been given a facelift (compare &lt;a href=&quot;http://static.springsource.org/spring/docs/3.2.0.RC1/reference/html/beans.html#beans-java-basic-concepts&quot;&gt;old&lt;/a&gt; vs &lt;a href=&quot;http://static.springsource.org/spring/docs/3.2.0.RC2/reference/html/beans.html#beans-java-basic-concepts&quot;&gt;new&lt;/a&gt;). This change also goes along nicely with the new look for our &lt;a href=&quot;http://static.springsource.org/spring/docs/3.2.0.RC2/api&quot;&gt;API docs&lt;/a&gt; under JDK 7.
-&lt;/li&gt;&lt;li&gt;We&#039;re now publishing &lt;a href=&quot;http://javadiff.sourceforge.net/&quot;&gt;JDiff&lt;/a&gt; reports to aid users in understanding what&#039;s changing at the API level between releases. For example, we&#039;ve just published reports for &lt;a href=&quot;http://static.springsource.org/spring/docs/3.1.3.RELEASE_to_3.2.0.RC2&quot;&gt;3.1.3.RELEASE_to_3.2.0.RC2&lt;/a&gt; and &lt;a href=&quot;http://static.springsource.org/spring/docs/3.2.0.RC1_to_3.2.0.RC2/&quot;&gt;3.2.0.RC1_to_3.2.0.RC2&lt;/a&gt;. Spend a little time clicking around – we hope you&#039;ll find it&#039;s a great way to stay up to date. It helps us too in our own code reviews and when ensuring backward compatibility between releases.
-&lt;/li&gt;&lt;/ul&gt;
-&lt;p&gt;&lt;a target=&quot;_blank&quot; href=&quot;http://www.springsource.com/download/community?project=Spring%20Framework&amp;amp;version=3.2.0.RC2&quot;&gt;Download&lt;/a&gt; | &lt;a href=&quot;http://static.springsource.org/spring-framework/docs/3.2.0.RC2/reference&quot;&gt;Documentation&lt;/a&gt; | &lt;a target=&quot;_blank&quot; href=&quot;http://static.springsource.org/spring-framework/docs/3.2.0.RC2/api/&quot;&gt;Javadoc API&lt;/a&gt; | &lt;a target=&quot;_blank&quot; href=&quot;http://static.springsource.org/spring-framework/docs/3.2.0.RC2/changelog.txt&quot;&gt;Change Log&lt;/a&gt; | &lt;a href=&quot;http://jira.springframework.org/browse/SPR&quot;&gt;JIRA&lt;/a&gt; | &lt;a href=&quot;http://forum.springsource.org/forumdisplay.php?f=21&quot;&gt;Forum&lt;/a&gt; | &lt;a href=&quot;http://stackoverflow.com/questions/tagged/spring&quot;&gt;Stack Overflow&lt;/a&gt;&lt;/p&gt;
-</description>
- <comments>http://www.springsource.org/node/3750#comments</comments>
- <pubDate>Tue, 27 Nov 2012 11:34:43 +0000</pubDate>
- <dc:creator>Chris Beams</dc:creator>
- <guid isPermaLink="false">3750 at http://www.springsource.org</guid>
-</item>
-<item>
- <title>Spring Social 1.1.0.M1 Released</title>
- <link>http://www.springsource.org/spring-social/news/1.1.0.m1-released</link>
- <description>&lt;p&gt;Dear Spring Community,&lt;/p&gt;
-&lt;p&gt;We are pleased to announce the first milestone release of &lt;a href=&quot;http://www.springsource.org/spring-social&quot; target=&quot;_blank&quot;&gt;Spring Social&lt;/a&gt; 1.1.0!&lt;/p&gt;
-&lt;p&gt;&lt;strong&gt;Spring Social is an extension of the Spring Framework that enables you to connect your Java applications to Software-as-a-Service (SaaS) providers such as Facebook and Twitter.&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Along with Spring Social 1.1.0, we are also releasing milestones for Spring Social Facebook 1.1.0 and Spring Social Twitter 1.1.0.&lt;/p&gt;
-&lt;p&gt;These 1.1.0.M1 releases include the following:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Easier XML and Java configuration.&lt;/li&gt;
-&lt;li&gt;Tighter adherence to the latest OAuth 2 specification drafts, including HTTP Basic client authentication and support for Resource Owner Credentials Grant and Client Credentials Grant.&lt;/li&gt;
-&lt;li&gt;Updates to both the Facebook and Twitter API bindings, including binding to version 1.1 of Twitter&#039;s API.&lt;/li&gt;
-&lt;li&gt;Support for OpenGraph operations in the Facebook API binding.&lt;/li&gt;
-&lt;li&gt;Support for Facebook Query Language (FQL).&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;In addition, several smaller enhancements and bug fixes were applied.&lt;/p&gt;
-&lt;p&gt;To get the software, download the release distribution (&lt;a target=&quot;_blank&quot; href=&quot;http://www.springsource.org/download/community?project=Spring%2520Social&amp;amp;version=1.1.0.M1&quot;&gt;Core&lt;/a&gt; | &lt;a target=&quot;_blank&quot; href=&quot;http://www.springsource.com/download/community?project=Spring%20Social%20Facebook&amp;amp;version=1.1.0.M1&quot;&gt;Facebook&lt;/a&gt; | &lt;a target=&quot;_blank&quot; href=&quot;http://www.springsource.com/download/community?project=Spring%20Social%20Twitter&amp;amp;version=1.1.0.M1&quot;&gt;Twitter&lt;/a&gt;).&lt;/p&gt;
-&lt;p&gt;As always, the Spring Social community has been awesome at providing feedback and contributing pull requests to make this release possible. A special thanks to Jeremy Appel for contributing a rather large pull request to bring the Spring Social Twitter API binding in line with version 1.1 of Twitter&#039;s API.&lt;/p&gt;
-&lt;p&gt;These milestone releases mark the first step toward Spring Social 1.1.0. We plan to increase momentum on these milestone releases up to the 1.1.0 GA release, so expect another milestone release in the next few weeks. If you&#039;d like to follow along or contribute, we encourage you to participate in the &lt;a href=&quot;http://forum.springsource.org/forumdisplay.php?82-Social&quot; target=&quot;_blank&quot;&gt;Spring Social Forum&lt;/a&gt;, &lt;a href=&quot;https://jira.springsource.org/browse/SOCIAL&quot; target=&quot;_blank&quot;&gt;report bugs or suggest enhancements&lt;/a&gt;, or to &lt;a href=&quot;https://github.com/SpringSource/spring-social&quot; target=&quot;_blank&quot;&gt;fork the code&lt;/a&gt; and contribute back via pull requests.&lt;/p&gt;
-</description>
- <pubDate>Mon, 26 Nov 2012 21:11:10 +0000</pubDate>
- <dc:creator>Craig Walls</dc:creator>
- <guid isPermaLink="false">3749 at http://www.springsource.org</guid>
-</item>
-<item>
- <title>The Data Renaissance; Going In-memory with VMware vFabric GemFire 7.0 and Spring</title>
- <link>http://www.springsource.org/node/3748</link>
- <description>&lt;p&gt;Rapid change has come to traditional data management. The emergence of round-the-clock applications accessed from a variety of device types has strained the old way of handling data. New, in-memory data systems delivering high performance and simple scale-out are what’s needed.&lt;/p&gt;
-&lt;p&gt;Unlike most new entrants in this space, VMware is longtime pioneer with a deep understanding of in-memory data systems. vFabric GemFire v 7.0 builds on years of production deployments delivering not only speed and scale but data reliability. Writing new modern applications for GemFire has never been easier with the Spring Data GemFire project. &lt;/p&gt;
-&lt;p&gt;On the operations side, IT pros will find that the new monitoring and management facilities greatly simplify running GemFire.&lt;/p&gt;
-&lt;p&gt;North America: December 6, 2012&lt;br&gt;
-  10:00am Pacific Standard (SF, GMT-8:00)&lt;br&gt;
-&lt;a href=&quot;https://vmwareevents.webex.com/vmwareevents/onstage/g.php?t=a&amp;d=664206355&quot;&gt;Register Here&lt;/a&gt;&lt;a href=&quot;https://vmwareevents.webex.com/vmwareevents/onstage/g.php?t=a&amp;d=666350065&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Europe: December 6, 2012&lt;br&gt;
-3:00pm Western Europe (London, GMT) &lt;br&gt;
-&lt;a href=&quot;https://vmwareevents.webex.com/vmwareevents/onstage/g.php?t=a&amp;d=666350065&quot;&gt;Register Here&lt;/a&gt;&lt;/p&gt;
-</description>
- <comments>http://www.springsource.org/node/3748#comments</comments>
- <category domain="http://www.springsource.org/taxonomy/term/4">News and Announcements</category>
- <pubDate>Mon, 26 Nov 2012 19:45:40 +0000</pubDate>
- <dc:creator>Pieter Humphrey</dc:creator>
- <guid isPermaLink="false">3748 at http://www.springsource.org</guid>
 </item>
 </channel>
 </rss>

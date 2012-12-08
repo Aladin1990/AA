@@ -1,0 +1,20 @@
+package main;
+
+public class GiftBuilder{
+	StringBuilder giftOutPut = new StringBuilder();
+	GiftBuilder()
+	{
+		
+	}
+	public StringBuilder getGiftOutPut() {
+		return giftOutPut;
+	}
+	public void setGiftOutPut(String giftOutPut) {
+		this.giftOutPut.append(giftOutPut);
+	}
+	public void deleteLastEntery(String lastEntery) {
+		this.giftOutPut.replace(giftOutPut.indexOf(lastEntery), giftOutPut.length(),"");
+	}
+	
+
+}

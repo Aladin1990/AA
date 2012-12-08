@@ -1,0 +1,17 @@
+package main;
+
+public class GiftBuilder{
+	StringBuilder giftOutPut = new StringBuilder();
+	GiftBuilder()
+	{
+		
+	}
+	public StringBuilder getGiftOutPut() {
+		return giftOutPut;
+	}
+	public void setGiftOutPut(StringBuilder giftOutPut) {
+		this.giftOutPut = giftOutPut;
+	}
+	
+
+}
