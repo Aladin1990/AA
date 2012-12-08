@@ -35,6 +35,7 @@ public class GUI extends JFrame{
 	private ArrayList<Multichoice> list1 = new ArrayList<Multichoice>();
 	private ArrayList<ShortAnswer> list2 = new ArrayList<ShortAnswer>();
 	private ArrayList<MissingWord> list3 = new ArrayList<MissingWord>();
+	private ArrayList<StringBuilder> previewList = new ArrayList<StringBuilder>();
 
 	JPanel panel1 = new JPanel();
 	JPanel panel2 = new JPanel();
@@ -55,8 +56,12 @@ public class GUI extends JFrame{
 	JRadioButton truebtn;
 	boolean titleSet = false;
 	
+	//Matching
+	JTextField mtextField;
+	JTextArea mtextArea;
 	//general fields
 	JTextArea textArea;
+	JTextArea previewText;
 	
 	String onlyNumbers;
 	//gift building objects
@@ -85,20 +90,25 @@ public class GUI extends JFrame{
 
 		JPanel panel5 = numericalPanel("Panel #5");
 		tabbedPane.addTab("Numerical", panel5);
-		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_5);
 
 		JPanel panel6 = missingWordPanel("Panel #6");
 		tabbedPane.addTab("Missing Word", panel6);
-		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_6);
 
 		JPanel panel7 = essayPanel("Panel #7 ");
 		tabbedPane.addTab("Essay", panel7);
-		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_7);
 
 		JPanel panel8 = descriptionPanel("Panel #8");
 		tabbedPane.addTab("Description", panel8);
-		tabbedPane.setMnemonicAt(3, KeyEvent.VK_4);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_8);
+		
+		JPanel panel9 = previewPanel("Panel #9");
+		tabbedPane.addTab("Preview", panel9);
+		tabbedPane.setMnemonicAt(3, KeyEvent.VK_9);
 
+		
 		getContentPane().add(tabbedPane);
 		setSize(660, 400);
 		setLocationRelativeTo(null);
@@ -110,6 +120,36 @@ public class GUI extends JFrame{
 			}
 		});
 	}
+	private JPanel previewPanel(String string) {
+		JPanel panel = new JPanel();
+		panel.setLayout(new MigLayout("wrap 1", "[grow]", "grow"));
+		panel.add(new JScrollPane(previewText = new JTextArea()),"grow");
+		JButton allQbtn= new JButton("Display all Questions");
+		JButton currentQbtn= new JButton("Display Current Question");
+		panel.add(allQbtn,"split 2");
+		panel.add(currentQbtn,"");
+		
+		//action Listeners
+		allQbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				previewText.setText("");
+				previewList =giftBuilder.giftOutPutBuilderList;
+				for(StringBuilder i:previewList){
+					previewText.append(i.toString());
+				}
+			}
+		});
+		currentQbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				previewText.setText("");
+				previewText.setText(giftBuilder.getGiftOutPut().toString());
+			}
+		});
+		return panel;
+	}
+	
 
 	JPanel trueFalsePanel(String panelName) {
 		JPanel panel = new JPanel();
@@ -164,11 +204,11 @@ public class GUI extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				if(!titleSet){ 
 					giftBuilder.append("//true/false");
-					giftBuilder.append(formatAccess.formatTitle(TFtextArea.getText()));
-					giftBuilder.append("\n\n"); //add new line
+					giftBuilder.append(formatAccess.formatTitle(TFtextField.getText()));
 				}
 				giftBuilder.append(formatAccess.formatTrueFalse(TFtextArea.getText(),truebtn.isSelected())); 
 				titleSet=false;
+				giftBuilder.append("\r\n\r\n"); //add new line
 				giftBuilder.appendQuestion();
 				TFtextField.setText("");
 				TFtextArea.setText("");
@@ -183,12 +223,18 @@ public class GUI extends JFrame{
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
 
 		panel.add(new JLabel("Question Title (optional)"), "right");
-		panel.add(new JTextField(), "growx,right,gapy 10");
+		panel.add(mtextField = new JTextField(), "growx,right,gapy 10");
+		
+		panel.add(new JLabel("Question"), "right,top,gapy 20");
+		panel.add(new JScrollPane(mtextArea = new JTextArea()), "grow,hmin 70,gapy 10");
+		
+		JButton clearbtn = new JButton("Clear Text");
+		panel.add(clearbtn, "skip,al right,wrap");
 
 		JButton addbtn;
 		addbtn = new JButton("Add Q&A");
 		panel.add(addbtn, "right, top,gapy 20");
-		panel.add(new JScrollPane(scrollPanel), "grow,right,gapy 20");
+		panel.add(new JScrollPane(scrollPanel), "grow,right,gapy 10,hmin 90");
 
 		JButton deletebtn = new JButton("Delete Selected");
 		panel.add(deletebtn, "skip,al right,wrap");
@@ -205,22 +251,53 @@ public class GUI extends JFrame{
 				repaint();
 				numberOfQustions++;
 			}
-
 		});
 		deletebtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				int inter=0;
+				//boolean delete = true;
+				while(true){
+				for (Matching i : list) {
+					if(i.isChecked()){
+						i.delete(inter);
+						list.remove(i);
+						repaint();
+						inter=0;
+						break;
+					}
+					inter++;
+				}
+				if(list.size()<=inter) break;
+				}
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				giftBuilder.append("//matching");
+				giftBuilder.append(formatAccess.formatTitle(mtextField.getText()));
+				giftBuilder.append(mtextArea.getText()+" {"); 
+				titleSet=false;
 				for (Matching i : list) {
-					System.out.println("" + i.getTextField1().getText());
-					System.out.println("" + i.getTextField2().getText());
-
+					giftBuilder.append(formatAccess.formatMatching(i.getTextField1().getText(), i.getTextField2().getText()));
 				}
+				if(!list.isEmpty()) list.get(0).deleteAll();;
+				
+				list=new ArrayList<GUI.Matching>();
+				repaint();
+				numberOfQustions=0;
+				mtextField.setText("");
+				mtextArea.setText("");
+				giftBuilder.append("}\r\n"); //add new line
+				giftBuilder.appendQuestion();
+			}
+		});
+		clearbtn.addActionListener(new ActionListener() {
+
+			public void actionPerformed(ActionEvent e) {
+				TFtextArea.setText("");
 			}
 		});
 
@@ -543,8 +620,11 @@ public class GUI extends JFrame{
 		private JTextField textField1;
 		private JTextField textField2;
 		private JLabel label;
+		private JCheckBox checkBox;
+		private JPanel panel;
 
 		Matching(JPanel panel, int count) {
+			this.panel=panel;
 			panel.setLayout(new MigLayout("wrap 5",
 					"[][grow,fill][][grow,fill][]", ""));
 			char letter = (char) ('A' + count);
@@ -553,7 +633,7 @@ public class GUI extends JFrame{
 			panel.add(textField1 = new JTextField(), "grow");
 			panel.add(new JLabel("" + letter));
 			panel.add(textField2 = new JTextField(), "grow");
-			panel.add(new JCheckBox("Delete"), "right");
+			panel.add(checkBox=new JCheckBox("Delete"), "right");
 		}
 
 		public JTextField getTextField1() {
@@ -562,6 +642,24 @@ public class GUI extends JFrame{
 
 		public JTextField getTextField2() {
 			return textField2;
+		}
+		public boolean isChecked(){
+			if(checkBox.isSelected()) return true;
+			
+			return false;
+		}
+		public void deleteAll(){
+			panel.removeAll();
+		}
+		@SuppressWarnings("deprecation")
+		public void delete(int multiplyer){
+			//panel.disable();
+			int compomentNumber=multiplyer*5;
+			panel.remove(compomentNumber);
+			panel.remove(compomentNumber);
+			panel.remove(compomentNumber);
+			panel.remove(compomentNumber);
+			panel.remove(compomentNumber);
 		}
 	}
 
@@ -605,9 +703,11 @@ public class GUI extends JFrame{
 		private JTextArea textArea1;
 		private JTextField textField;
 		private JTextArea textArea2;
+		private JPanel panel;
 
 		MissingWord(JPanel panel, int count) {
 			this.count = count;
+			this.panel=panel;
 			panel.setLayout(new MigLayout("wrap 2",
 					"[][grow,fill][][grow,fill][][grow,fill]", "grow"));
 			panel.add(new JLabel("Mising word" + count), "right,top");
@@ -619,7 +719,6 @@ public class GUI extends JFrame{
 			panel.add(new JLabel("Text After mising word"), "right,top");
 			panel.add(textArea2 = new JTextArea(), "grow");
 		}
-
 		public int getCount() {
 			return count;
 		}

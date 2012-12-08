@@ -16,4 +16,8 @@ public class FormatAccess {
 		formatterString = " "+question+" {"+formatterString+"}";
 		return formatterString;
 	}
+	String formatMatching(String part1,String part2){
+		formatterString = " ="+part1+" -> "+part2;
+		return formatterString;
+	}
 }

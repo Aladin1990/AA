@@ -4,6 +4,9 @@ import java.util.ArrayList;
 
 public class GiftBuilder{
 	ArrayList<StringBuilder> giftOutPutBuilderList = new ArrayList<StringBuilder>();
+	public ArrayList<StringBuilder> getGiftOutPutBuilderList() {
+		return giftOutPutBuilderList;
+	}
 	StringBuilder giftOutPutBuilder = new StringBuilder();
 	GiftBuilder()
 	{
@@ -17,6 +20,7 @@ public class GiftBuilder{
 	}
 	public void appendQuestion() {
 		giftOutPutBuilderList.add(giftOutPutBuilder);
+		giftOutPutBuilder = new StringBuilder();
 	}
 	public void deleteLastQuestion(String lastEntery) {
 		int lastIndex=giftOutPutBuilderList.size()-1;
@@ -27,7 +31,6 @@ public class GiftBuilder{
 	}
 	public StringBuilder getLastIsert() {
 		int lastIndex=giftOutPutBuilderList.size()-1;
-		return giftOutPutBuilderList.get(lastIndex);
-			
+		return giftOutPutBuilderList.get(lastIndex);	
 	}
 }
