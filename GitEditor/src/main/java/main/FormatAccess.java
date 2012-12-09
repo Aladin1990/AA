@@ -31,11 +31,15 @@ public class FormatAccess {
 		else{
 			formatterString = " =%"+precentage+"%"+part1+""; 
 		}
-				//feed back
 		return formatterString;
 	}
 	String formatShortAnswer(String part1){
 		formatterString = " ="+part1;
+		return formatterString;
+	}
+
+	public String formatNumerical(String text, String text2) {
+		formatterString="#"+text+":"+text2;
 		return formatterString;
 	}
 }
