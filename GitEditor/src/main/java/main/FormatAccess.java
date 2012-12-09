@@ -38,8 +38,23 @@ public class FormatAccess {
 		return formatterString;
 	}
 
-	public String formatNumerical(String text, String text2) {
-		formatterString="#"+text+":"+text2;
+	public String formatNumerical(String text, String text2, String string) {
+		formatterString="#"+text+":0"+" ";
+		int precentage=Integer.parseInt(string);
+		if(precentage==100){
+			formatterString="#=%"+precentage+"%"+text+":"+text2;
+		}
+		else if(precentage==0){
+			formatterString="#="+text+":0";
+		}
+		else{
+			formatterString="#=%"+precentage+"%"+text+":"+text2;
+		}
+		return formatterString;
+	}
+
+	public String formatMissingWord(String text, String text2, String text3) {
+		formatterString=text+" {="+text2+"} "+text3+"\n\n";
 		return formatterString;
 	}
 }

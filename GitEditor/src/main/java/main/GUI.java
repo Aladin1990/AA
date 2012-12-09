@@ -76,8 +76,9 @@ public class GUI extends JFrame{
 	JTextArea dTextArea;
 	JTextField dTextField;
 	//general fields
-		JTextArea textArea;
-		JTextArea previewText;
+	//missing word
+	JTextField misTextField;
+	JTextArea previewText;
 	
 	
 	
@@ -353,7 +354,7 @@ public class GUI extends JFrame{
 		clearbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
+				mulTextArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
@@ -406,7 +407,7 @@ public class GUI extends JFrame{
 		clearbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
+				sTextArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
@@ -419,7 +420,7 @@ public class GUI extends JFrame{
 					giftBuilder.append(formatAccess.formatShortAnswer(i.getTextField1().getText()));
 				}
 				if(!list2.isEmpty()) list2.get(0).deleteAll();
-				list1=new ArrayList<Multichoice>();
+				list2=new ArrayList<ShortAnswer>();
 				repaint();
 				sTextField.setText("");
 				sTextArea.setText("");
@@ -432,6 +433,8 @@ public class GUI extends JFrame{
 
 	JPanel numericalPanel(String panelName) {
 		JPanel panel = new JPanel();
+		SpinnerModel sm = new SpinnerNumberModel(0, 0, 100, 1);;
+		final JSpinner spinner;
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
 
 		panel.add(new JLabel("Question Title (optional)"), "right");
@@ -444,9 +447,9 @@ public class GUI extends JFrame{
 		panel.add(new JLabel("Correct Answer"));
 		panel.add(nCorrectTextArea = new JTextField(), "growx");
 		panel.add(new JLabel("Range Margin: "), "");
-		panel.add(nMinTextArea = new JTextField(), "growx");
+		panel.add(nMinTextArea = new JTextField(), "growx,split 2");
+		panel.add(spinner =new JSpinner(sm));
 		
-
 		JButton savebtn = new JButton("Save Question");
 		panel.add(savebtn, "gapy 20");
 		nCorrectTextArea.addKeyListener(new KeyAdapter() {
@@ -459,7 +462,7 @@ public class GUI extends JFrame{
 		});
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
+				nTextArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
@@ -467,7 +470,7 @@ public class GUI extends JFrame{
 				giftBuilder.append("//Numerical");
 				giftBuilder.append(formatAccess.formatTitle(nTextField.getText()));
 				giftBuilder.append(nTextArea.getText()+" {"); 
-				giftBuilder.append(formatAccess.formatNumerical(nCorrectTextArea.getText(), nMinTextArea.getText()));
+				giftBuilder.append(formatAccess.formatNumerical(nCorrectTextArea.getText(), nMinTextArea.getText(),spinner.getModel().getValue().toString()));
 				nTextField.setText("");
 				nTextArea.setText("");
 				nCorrectTextArea.setText("");
@@ -482,9 +485,8 @@ public class GUI extends JFrame{
 	JPanel missingWordPanel(String panelName) {
 		JPanel panel = new JPanel();
 		panel.setLayout(new MigLayout("wrap 2", "[][grow]", "grow"));
-		textArea = new JTextArea("", 20, 20);
 		panel.add(new JLabel("Question Title (optional)"), "right");
-		panel.add(new JTextField("Enter Missing words in the following text"),"growx,right,gapy 10");
+		panel.add(misTextField = new JTextField(""),"growx,right,gapy 10");
 		JButton addansbtn;
 		addansbtn = new JButton("Add another missing word");
 		panel.add(addansbtn, "right,top,gapy 10,wrap");
@@ -503,23 +505,17 @@ public class GUI extends JFrame{
 
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				giftBuilder.append("//Missing Word");
+				giftBuilder.append(formatAccess.formatTitle(misTextField.getText()));
+				
 				for (MissingWord i : list3) {
-					System.out.println("" + i.getTextArea1().getText());
-					System.out.println("" + i.getTextField().getText());
-					System.out.println("" + i.getTextArea2().getText());
+					giftBuilder.append(formatAccess.formatMissingWord(i.getTextArea1().getText(),i.getTextField().getText(),i.getTextArea2().getText()));
 				}
-				giftBuilder.append("//Short Answer");
-				giftBuilder.append(formatAccess.formatTitle(sTextField.getText()));
-				giftBuilder.append(sTextArea.getText()+" {"); 
-				for (ShortAnswer i : list2) {
-					giftBuilder.append(formatAccess.formatShortAnswer(i.getTextField1().getText()));
-				}
-				if(!list2.isEmpty()) list2.get(0).deleteAll();
-				list1=new ArrayList<Multichoice>();
+
+				if(!list3.isEmpty()) list3.get(0).deleteAll();
+				list3=new ArrayList<MissingWord>();
 				repaint();
-				sTextField.setText("");
-				sTextArea.setText("");
-				giftBuilder.append("}\n"); //add new line
+				misTextField.setText("");
 				giftBuilder.appendQuestion();
 			}
 		});
@@ -571,12 +567,12 @@ public class GUI extends JFrame{
 		panel.add(savebtn, "gapy 20");
 		clearbtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				textArea.setText("");
+				dTextArea.setText("");
 			}
 		});
 		savebtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				giftBuilder.append("//Essay");
+				giftBuilder.append("//Description");
 				giftBuilder.append(formatAccess.formatTitle(eTextField.getText()));
 				giftBuilder.append(eTextArea.getText()+" {}"); 
 				eTextField.setText("");
@@ -700,18 +696,17 @@ public class GUI extends JFrame{
 		private JTextField textField;
 		private JTextArea textArea2;
 		private JPanel panel;
-
+		
 		MissingWord(JPanel panel, int count) {
 			this.count = count;
 			this.panel=panel;
-			panel.setLayout(new MigLayout("wrap 2",
-					"[][grow,fill][][grow,fill][][grow,fill]", "grow"));
+			panel.setLayout(new MigLayout("wrap 2","[][grow,fill]", "grow"));
 			panel.add(new JLabel("Mising word" + count), "right,top");
 			panel.add(new DrawLine());
 			panel.add(new JLabel("Text Before mising word"), "right,top");
 			panel.add(textArea1 = new JTextArea(), "grow");
-			panel.add(new JLabel("Enter missing word"), "right,top");
-			panel.add(textField = new JTextField(), "growx");
+			panel.add(new JLabel("Corret Missing Word"));
+			panel.add(textField = new JTextField(),"grow");
 			panel.add(new JLabel("Text After mising word"), "right,top");
 			panel.add(textArea2 = new JTextArea(), "grow");
 		}
