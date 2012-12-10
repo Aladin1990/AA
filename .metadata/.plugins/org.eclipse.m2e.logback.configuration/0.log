@@ -2646,3 +2646,7 @@ Caused by: org.codehaus.plexus.util.xml.pull.XmlPullParserException: Unrecognise
 2012-12-10 07:35:01,353 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\g00247318\Desktop\dfgdfg\AA\GitEditor\src\main\resources
 2012-12-10 07:35:01,356 [Worker-15] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
 2012-12-10 07:35:01,357 [Worker-15] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\g00247318\Desktop\dfgdfg\AA\GitEditor\src\test\resources
+2012-12-10 08:02:28,159 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2012-12-10 08:02:28,160 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\g00247318\Desktop\dfgdfg\AA\GitEditor\src\main\resources
+2012-12-10 08:02:28,162 [Worker-21] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (Cp1252 actually) to copy filtered resources, i.e. build is platform dependent!
+2012-12-10 08:02:28,163 [Worker-21] INFO  o.e.m.c.i.embedder.EclipseLogger - skip non existing resourceDirectory C:\Users\g00247318\Desktop\dfgdfg\AA\GitEditor\src\test\resources

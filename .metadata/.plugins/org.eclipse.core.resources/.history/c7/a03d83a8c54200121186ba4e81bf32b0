@@ -575,8 +575,8 @@ public class GUI extends JFrame{
 				giftBuilder.append("//Description");
 				giftBuilder.append(formatAccess.formatTitle(eTextField.getText()));
 				giftBuilder.append(eTextArea.getText()+" {}"); 
-				dTextField.setText("");
-				dTextArea.setText("");
+				eTextField.setText("");
+				eTextArea.setText("");
 				giftBuilder.appendQuestion();
 			}
 		});

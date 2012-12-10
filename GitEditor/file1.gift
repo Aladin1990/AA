@@ -1,0 +1,21 @@
+//true/false ::Q1::  MONDAY? {T} FRIDAY? {F}
+
+
+//true/false ::Q1 again::  q1 again? {T}
+
+
+//matching ::Q2:: MATCH COUNTRYS CAPIRTALS { =ireland -> dublin =england -> london =germany -> berlin}
+
+//Multichoice ::Q3:: 2+2 is? { ~2# wrong =4# correct =%50%3.5}
+
+//Short Answer ::Q4:: two+two=? { =two =2}
+
+//Numerical ::Q5:: 2/5= {#=%50%0.4:0.2}
+
+//Missing Word ::Q6 Enter missing words:: today {=is} monday
+
+tommorow {=is} tuesday
+
+
+//Essay ::Q7:: Write an essay {}
+//Description ::::  {}
