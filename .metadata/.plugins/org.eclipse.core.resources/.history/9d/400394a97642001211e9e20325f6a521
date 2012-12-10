@@ -1,9 +1,6 @@
 package main;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
-
-import javax.swing.JOptionPane;
 
 public class GiftBuilder{
 	ArrayList<StringBuilder> giftOutPutBuilderList = new ArrayList<StringBuilder>();
@@ -37,16 +34,5 @@ public class GiftBuilder{
 		return giftOutPutBuilderList.get(lastIndex);	
 	}
 	public void writeQuestionsTofile() {
-		String name=JOptionPane.showInputDialog("Enter file name");
-		try {
-			FileIO fileOutput = new FileIO(name+".gift", 2);
-			for(StringBuilder i:giftOutPutBuilderList){
-			fileOutput.writeLine(i.toString());
-			}
-			fileOutput.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 }

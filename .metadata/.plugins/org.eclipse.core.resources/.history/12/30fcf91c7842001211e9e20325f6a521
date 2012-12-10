@@ -37,7 +37,7 @@ public class GiftBuilder{
 		return giftOutPutBuilderList.get(lastIndex);	
 	}
 	public void writeQuestionsTofile() {
-		String name=JOptionPane.showInputDialog("Enter file name");
+		String name=JOptionPane.showInputDialog("Enter file name",JOptionPane.INFORMATION_MESSAGE);
 		try {
 			FileIO fileOutput = new FileIO(name+".gift", 2);
 			for(StringBuilder i:giftOutPutBuilderList){

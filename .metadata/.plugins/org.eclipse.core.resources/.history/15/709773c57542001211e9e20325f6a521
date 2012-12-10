@@ -163,7 +163,12 @@ public class GUI extends JFrame{
 		currentQbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				giftBuilder.writeQuestionsTofile();
+				try {
+					new FileIO("gift.gif",2);
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		return panel;

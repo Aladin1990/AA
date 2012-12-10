@@ -9,7 +9,6 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
@@ -145,7 +144,7 @@ public class GUI extends JFrame{
 		panel.setLayout(new MigLayout("wrap 1", "[grow]", "grow"));
 		panel.add(new JScrollPane(previewText = new JTextArea()),"grow");
 		JButton allQbtn= new JButton("Display all Questions");
-		JButton currentQbtn= new JButton("Write To File");
+		JButton currentQbtn= new JButton("Display Current Question");
 		panel.add(allQbtn,"split 2");
 		panel.add(currentQbtn,"");
 		
@@ -163,7 +162,8 @@ public class GUI extends JFrame{
 		currentQbtn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				giftBuilder.writeQuestionsTofile();
+				previewText.setText("");
+				previewText.setText(giftBuilder.getGiftOutPut().toString());
 			}
 		});
 		return panel;
