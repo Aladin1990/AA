@@ -58,7 +58,7 @@ public class FileIO
          }
          else if (setting == FOR_WRITING)
          {
-            FileWriter fw = new FileWriter(file);
+            FileWriter fw = new FileWriter(file,true);
             BufferedWriter bw = new BufferedWriter(fw);
             pw = new PrintWriter(bw);
          }
